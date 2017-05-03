@@ -40,7 +40,7 @@
 #include <algorithm>
 #include <vector>
 
-#include "write_ply.hpp"
+// #include "write_ply.hpp"
 
 
 namespace carve {
