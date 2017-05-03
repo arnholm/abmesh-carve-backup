@@ -14,10 +14,10 @@
 # ifndef BOOST_PREPROCESSOR_LIST_FOLD_LEFT_HPP
 # define BOOST_PREPROCESSOR_LIST_FOLD_LEFT_HPP
 #
-# include <carve/external/boost/preprocessor/cat.hpp>
-# include <carve/external/boost/preprocessor/control/while.hpp>
-# include <carve/external/boost/preprocessor/debug/error.hpp>
-# include <carve/external/boost/preprocessor/detail/auto_rec.hpp>
+# include <boost/preprocessor/cat.hpp>
+# include <boost/preprocessor/control/while.hpp>
+# include <boost/preprocessor/debug/error.hpp>
+# include <boost/preprocessor/detail/auto_rec.hpp>
 #
 # /* BOOST_PP_LIST_FOLD_LEFT */
 #
@@ -34,11 +34,11 @@
 # define BOOST_PP_LIST_FOLD_LEFT_2ND_D BOOST_PP_LIST_FOLD_LEFT_D
 #
 # if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    include <carve/external/boost/preprocessor/list/detail/edg/fold_left.hpp>
+#    include <boost/preprocessor/list/detail/edg/fold_left.hpp>
 # elif BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_DMC()
-#    include <carve/external/boost/preprocessor/list/detail/dmc/fold_left.hpp>
+#    include <boost/preprocessor/list/detail/dmc/fold_left.hpp>
 # else
-#    include <carve/external/boost/preprocessor/list/detail/fold_left.hpp>
+#    include <boost/preprocessor/list/detail/fold_left.hpp>
 # endif
 #
 # define BOOST_PP_LIST_FOLD_LEFT_CHECK_BOOST_PP_NIL 1

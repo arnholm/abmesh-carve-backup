@@ -10,23 +10,19 @@
 #if !defined(BOOST_FUNCTIONAL_HASH_FWD_HPP)
 #define BOOST_FUNCTIONAL_HASH_FWD_HPP
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
-# pragma once
+#include <boost/config.hpp>
+#if defined(BOOST_HAS_PRAGMA_ONCE)
+#pragma once
 #endif
 
-#include <carve/external/boost/config.hpp>
 #include <cstddef>
-#include <carve/external/boost/detail/workaround.hpp>
+#include <boost/detail/workaround.hpp>
 
 namespace boost
 {
     template <class T> struct hash;
 
-#if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-    template <class T> void hash_combine(std::size_t& seed, T& v);
-#else
     template <class T> void hash_combine(std::size_t& seed, T const& v);
-#endif
 
     template <class It> std::size_t hash_range(It, It);
     template <class It> void hash_range(std::size_t&, It, It);

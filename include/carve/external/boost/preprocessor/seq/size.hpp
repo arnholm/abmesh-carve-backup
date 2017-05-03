@@ -12,9 +12,8 @@
 # ifndef BOOST_PREPROCESSOR_SEQ_SIZE_HPP
 # define BOOST_PREPROCESSOR_SEQ_SIZE_HPP
 #
-# include <carve/external/boost/preprocessor/cat.hpp>
-# include <carve/external/boost/preprocessor/config/config.hpp>
-# include <carve/external/boost/preprocessor/tuple/eat.hpp>
+# include <boost/preprocessor/cat.hpp>
+# include <boost/preprocessor/config/config.hpp>
 #
 # if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MWCC()
 #    define BOOST_PP_SEQ_SIZE(seq) BOOST_PP_SEQ_SIZE_I((seq))
@@ -544,5 +543,6 @@
 # define BOOST_PP_SEQ_SIZE_BOOST_PP_SEQ_SIZE_254 254
 # define BOOST_PP_SEQ_SIZE_BOOST_PP_SEQ_SIZE_255 255
 # define BOOST_PP_SEQ_SIZE_BOOST_PP_SEQ_SIZE_256 256
+# define BOOST_PP_SEQ_SIZE_BOOST_PP_SEQ_SIZE_257 257
 #
 # endif

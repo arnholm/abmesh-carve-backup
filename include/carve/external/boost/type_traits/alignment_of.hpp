@@ -9,12 +9,12 @@
 #ifndef BOOST_TT_ALIGNMENT_OF_HPP_INCLUDED
 #define BOOST_TT_ALIGNMENT_OF_HPP_INCLUDED
 
-#include <carve/external/boost/config.hpp>
+#include <boost/config.hpp>
 #include <cstddef>
 
-#include <carve/external/boost/type_traits/intrinsics.hpp>
+#include <boost/type_traits/intrinsics.hpp>
 // should be the last #include
-#include <carve/external/boost/type_traits/detail/size_t_trait_def.hpp>
+#include <boost/type_traits/detail/size_t_trait_def.hpp>
 
 #ifdef BOOST_MSVC
 #   pragma warning(push)
@@ -90,13 +90,11 @@ BOOST_TT_AUX_SIZE_T_TRAIT_DEF1(alignment_of,T,::boost::detail::alignment_of_impl
 
 // references have to be treated specially, assume
 // that a reference is just a special pointer:
-#ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 template <typename T>
 struct alignment_of<T&>
-    : alignment_of<T*>
+    : public alignment_of<T*>
 {
 };
-#endif
 #ifdef __BORLANDC__
 // long double gives an incorrect value of 10 (!)
 // unless we do this...
@@ -122,7 +120,7 @@ BOOST_TT_AUX_SIZE_T_TRAIT_SPEC1(alignment_of,void const volatile,0)
 #   pragma warning(pop)
 #endif
 
-#include <carve/external/boost/type_traits/detail/size_t_trait_undef.hpp>
+#include <boost/type_traits/detail/size_t_trait_undef.hpp>
 
 #endif // BOOST_TT_ALIGNMENT_OF_HPP_INCLUDED
 

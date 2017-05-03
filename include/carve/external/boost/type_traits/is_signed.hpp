@@ -10,13 +10,13 @@
 #ifndef BOOST_TT_IS_SIGNED_HPP_INCLUDED
 #define BOOST_TT_IS_SIGNED_HPP_INCLUDED
 
-#include <carve/external/boost/type_traits/is_integral.hpp>
-#include <carve/external/boost/type_traits/remove_cv.hpp>
-#include <carve/external/boost/type_traits/is_enum.hpp>
-#include <carve/external/boost/type_traits/detail/ice_or.hpp>
+#include <boost/type_traits/is_integral.hpp>
+#include <boost/type_traits/remove_cv.hpp>
+#include <boost/type_traits/is_enum.hpp>
+#include <boost/type_traits/detail/ice_or.hpp>
 
 // should be the last #include
-#include <carve/external/boost/type_traits/detail/bool_trait_def.hpp>
+#include <boost/type_traits/detail/bool_trait_def.hpp>
 
 namespace boost {
 
@@ -24,13 +24,26 @@ namespace boost {
 
 namespace detail{
 
-#if !(defined(__EDG_VERSION__) && __EDG_VERSION__ <= 238)
+#if !(defined(__EDG_VERSION__) && __EDG_VERSION__ <= 238) && !defined(BOOST_NO_INCLASS_MEMBER_INITIALIZATION)
+
+template <class T>
+struct is_signed_values
+{
+   //
+   // Note that we cannot use BOOST_STATIC_CONSTANT here, using enum's
+   // rather than "real" static constants simply doesn't work or give
+   // the correct answer.
+   //
+   typedef typename remove_cv<T>::type no_cv_t;
+   static const no_cv_t minus_one = (static_cast<no_cv_t>(-1));
+   static const no_cv_t zero = (static_cast<no_cv_t>(0));
+};
 
 template <class T>
 struct is_signed_helper
 {
    typedef typename remove_cv<T>::type no_cv_t;
-   BOOST_STATIC_CONSTANT(bool, value = (static_cast<no_cv_t>(-1) < 0));
+   BOOST_STATIC_CONSTANT(bool, value = (!(::boost::detail::is_signed_values<T>::minus_one  > boost::detail::is_signed_values<T>::zero)));
 };
 
 template <bool integral_type>
@@ -63,11 +76,7 @@ struct is_signed_imp
    > selector;
    typedef typename selector::template rebind<T> binder;
    typedef typename binder::type type;
-#if defined(BOOST_MSVC) && (BOOST_MSVC < 1300)
-   BOOST_STATIC_CONSTANT(bool, value = is_signed_imp<T>::type::value);
-#else
    BOOST_STATIC_CONSTANT(bool, value = type::value);
-#endif
 };
 
 #else
@@ -122,6 +131,6 @@ BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_signed,T,::boost::detail::is_signed_imp<T>::valu
 
 } // namespace boost
 
-#include <carve/external/boost/type_traits/detail/bool_trait_undef.hpp>
+#include <boost/type_traits/detail/bool_trait_undef.hpp>
 
 #endif // BOOST_TT_IS_MEMBER_FUNCTION_POINTER_HPP_INCLUDED

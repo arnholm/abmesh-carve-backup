@@ -10,31 +10,31 @@
 #ifndef BOOST_TT_IS_CLASS_HPP_INCLUDED
 #define BOOST_TT_IS_CLASS_HPP_INCLUDED
 
-#include <carve/external/boost/type_traits/config.hpp>
-#include <carve/external/boost/type_traits/intrinsics.hpp>
+#include <boost/type_traits/config.hpp>
+#include <boost/type_traits/intrinsics.hpp>
 #ifndef BOOST_IS_CLASS
-#   include <carve/external/boost/type_traits/is_union.hpp>
-#   include <carve/external/boost/type_traits/detail/ice_and.hpp>
-#   include <carve/external/boost/type_traits/detail/ice_not.hpp>
+#   include <boost/type_traits/is_union.hpp>
+#   include <boost/type_traits/detail/ice_and.hpp>
+#   include <boost/type_traits/detail/ice_not.hpp>
 
 #ifdef BOOST_TT_HAS_CONFORMING_IS_CLASS_IMPLEMENTATION
-#   include <carve/external/boost/type_traits/detail/yes_no_type.hpp>
+#   include <boost/type_traits/detail/yes_no_type.hpp>
 #else
-#   include <carve/external/boost/type_traits/is_scalar.hpp>
-#   include <carve/external/boost/type_traits/is_array.hpp>
-#   include <carve/external/boost/type_traits/is_reference.hpp>
-#   include <carve/external/boost/type_traits/is_void.hpp>
-#   include <carve/external/boost/type_traits/is_function.hpp>
+#   include <boost/type_traits/is_scalar.hpp>
+#   include <boost/type_traits/is_array.hpp>
+#   include <boost/type_traits/is_reference.hpp>
+#   include <boost/type_traits/is_void.hpp>
+#   include <boost/type_traits/is_function.hpp>
 #endif
 
 #endif // BOOST_IS_CLASS
 
 #ifdef __EDG_VERSION__
-#   include <carve/external/boost/type_traits/remove_cv.hpp>
+#   include <boost/type_traits/remove_cv.hpp>
 #endif
 
 // should be the last #include
-#include <carve/external/boost/type_traits/detail/bool_trait_def.hpp>
+#include <boost/type_traits/detail/bool_trait_def.hpp>
 
 namespace boost {
 
@@ -93,7 +93,6 @@ struct is_class_impl
 template <typename T>
 struct is_class_impl
 {
-#   ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
     BOOST_STATIC_CONSTANT(bool, value =
     (::boost::type_traits::ice_and<
         ::boost::type_traits::ice_not< ::boost::is_union<T>::value >::value,
@@ -103,16 +102,6 @@ struct is_class_impl
         ::boost::type_traits::ice_not< ::boost::is_void<T>::value >::value,
         ::boost::type_traits::ice_not< ::boost::is_function<T>::value >::value
         >::value));
-#   else
-    BOOST_STATIC_CONSTANT(bool, value =
-    (::boost::type_traits::ice_and<
-        ::boost::type_traits::ice_not< ::boost::is_union<T>::value >::value,
-        ::boost::type_traits::ice_not< ::boost::is_scalar<T>::value >::value,
-        ::boost::type_traits::ice_not< ::boost::is_array<T>::value >::value,
-        ::boost::type_traits::ice_not< ::boost::is_reference<T>::value>::value,
-        ::boost::type_traits::ice_not< ::boost::is_void<T>::value >::value
-        >::value));
-#   endif
 };
 
 # endif // BOOST_TT_HAS_CONFORMING_IS_CLASS_IMPLEMENTATION
@@ -135,6 +124,6 @@ BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_class,T,::boost::detail::is_class_impl<T>::value
     
 } // namespace boost
 
-#include <carve/external/boost/type_traits/detail/bool_trait_undef.hpp>
+#include <boost/type_traits/detail/bool_trait_undef.hpp>
 
 #endif // BOOST_TT_IS_CLASS_HPP_INCLUDED

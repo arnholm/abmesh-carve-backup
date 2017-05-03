@@ -9,24 +9,18 @@
 #ifndef BOOST_TT_REMOVE_BOUNDS_HPP_INCLUDED
 #define BOOST_TT_REMOVE_BOUNDS_HPP_INCLUDED
 
-#include <carve/external/boost/config.hpp>
+#include <boost/config.hpp>
 #include <cstddef>
-#include <carve/external/boost/detail/workaround.hpp>
-
-#if BOOST_WORKAROUND(BOOST_MSVC,<=1300)
-#include <carve/external/boost/type_traits/msvc/remove_bounds.hpp>
-#endif
+#include <boost/detail/workaround.hpp>
 
 // should be the last #include
-#include <carve/external/boost/type_traits/detail/type_trait_def.hpp>
-
-#if !BOOST_WORKAROUND(BOOST_MSVC,<=1300)
+#include <boost/type_traits/detail/type_trait_def.hpp>
 
 namespace boost {
 
 BOOST_TT_AUX_TYPE_TRAIT_DEF1(remove_bounds,T,T)
 
-#if !defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION) && !defined(BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS)
+#if !defined(BOOST_NO_ARRAY_TYPE_SPECIALIZATIONS)
 BOOST_TT_AUX_TYPE_TRAIT_PARTIAL_SPEC1_2(typename T,std::size_t N,remove_bounds,T[N],T type)
 BOOST_TT_AUX_TYPE_TRAIT_PARTIAL_SPEC1_2(typename T,std::size_t N,remove_bounds,T const[N],T const type)
 BOOST_TT_AUX_TYPE_TRAIT_PARTIAL_SPEC1_2(typename T,std::size_t N,remove_bounds,T volatile[N],T volatile type)
@@ -41,8 +35,6 @@ BOOST_TT_AUX_TYPE_TRAIT_PARTIAL_SPEC1_1(typename T,remove_bounds,T const volatil
 
 } // namespace boost
 
-#endif
-
-#include <carve/external/boost/type_traits/detail/type_trait_undef.hpp>
+#include <boost/type_traits/detail/type_trait_undef.hpp>
 
 #endif // BOOST_TT_REMOVE_BOUNDS_HPP_INCLUDED

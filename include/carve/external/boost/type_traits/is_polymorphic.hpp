@@ -8,14 +8,19 @@
 #ifndef BOOST_TT_IS_POLYMORPHIC_HPP
 #define BOOST_TT_IS_POLYMORPHIC_HPP
 
-#include <carve/external/boost/type_traits/intrinsics.hpp>
+#include <boost/type_traits/intrinsics.hpp>
 #ifndef BOOST_IS_POLYMORPHIC
-#include <carve/external/boost/type_traits/is_class.hpp>
-#include <carve/external/boost/type_traits/remove_cv.hpp>
+#include <boost/type_traits/is_class.hpp>
+#include <boost/type_traits/remove_cv.hpp>
 #endif
 // should be the last #include
-#include <carve/external/boost/type_traits/detail/bool_trait_def.hpp>
-#include <carve/external/boost/detail/workaround.hpp>
+#include <boost/type_traits/detail/bool_trait_def.hpp>
+#include <boost/detail/workaround.hpp>
+
+#if defined(BOOST_MSVC) && (BOOST_MSVC >= 1700)
+#pragma warning(push)
+#pragma warning(disable:4250)
+#endif
 
 namespace boost{
 
@@ -109,6 +114,10 @@ BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_polymorphic,T,BOOST_IS_POLYMORPHIC(T))
 
 } // namespace boost
 
-#include <carve/external/boost/type_traits/detail/bool_trait_undef.hpp>
+#include <boost/type_traits/detail/bool_trait_undef.hpp>
+
+#if defined(BOOST_MSVC) && (BOOST_MSVC >= 1700)
+#pragma warning(pop)
+#endif
 
 #endif

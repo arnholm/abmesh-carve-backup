@@ -7,10 +7,10 @@
  *
  * See http://www.boost.org for most recent version including documentation.
  *
- * $Id: config.hpp 52492 2009-04-19 14:55:57Z steven_watanabe $
+ * $Id$
  */
 
-#include <carve/external/boost/config.hpp>
+#include <boost/config.hpp>
 
 #if (defined(BOOST_NO_OPERATORS_IN_NAMESPACE) || defined(BOOST_NO_MEMBER_TEMPLATE_FRIENDS)) \
     && !defined(BOOST_MSVC)

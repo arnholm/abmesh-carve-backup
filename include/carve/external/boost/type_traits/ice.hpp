@@ -11,10 +11,10 @@
 #ifndef BOOST_TT_ICE_HPP_INCLUDED
 #define BOOST_TT_ICE_HPP_INCLUDED
 
-#include <carve/external/boost/type_traits/detail/yes_no_type.hpp>
-#include <carve/external/boost/type_traits/detail/ice_or.hpp>
-#include <carve/external/boost/type_traits/detail/ice_and.hpp>
-#include <carve/external/boost/type_traits/detail/ice_not.hpp>
-#include <carve/external/boost/type_traits/detail/ice_eq.hpp>
+#include <boost/type_traits/detail/yes_no_type.hpp>
+#include <boost/type_traits/detail/ice_or.hpp>
+#include <boost/type_traits/detail/ice_and.hpp>
+#include <boost/type_traits/detail/ice_not.hpp>
+#include <boost/type_traits/detail/ice_eq.hpp>
 
 #endif // BOOST_TT_ICE_HPP_INCLUDED

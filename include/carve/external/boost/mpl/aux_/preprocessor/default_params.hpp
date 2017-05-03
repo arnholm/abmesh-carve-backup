@@ -10,11 +10,11 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: default_params.hpp 49267 2008-10-11 06:19:02Z agurtovoy $
-// $Date: 2008-10-11 02:19:02 -0400 (Sat, 11 Oct 2008) $
-// $Revision: 49267 $
+// $Id$
+// $Date$
+// $Revision$
 
-#include <carve/external/boost/mpl/aux_/config/preprocessor.hpp>
+#include <boost/mpl/aux_/config/preprocessor.hpp>
 
 // BOOST_MPL_PP_DEFAULT_PARAMS(0,T,int): <nothing>
 // BOOST_MPL_PP_DEFAULT_PARAMS(1,T,int): T1 = int
@@ -23,7 +23,7 @@
 
 #if !defined(BOOST_MPL_CFG_NO_OWN_PP_PRIMITIVES)
 
-#   include <carve/external/boost/preprocessor/cat.hpp>
+#   include <boost/preprocessor/cat.hpp>
 
 #   define BOOST_MPL_PP_DEFAULT_PARAMS(n,p,v) \
     BOOST_PP_CAT(BOOST_MPL_PP_DEFAULT_PARAMS_,n)(p,v) \
@@ -42,11 +42,11 @@
 
 #else
 
-#   include <carve/external/boost/preprocessor/tuple/elem.hpp>
-#   include <carve/external/boost/preprocessor/comma_if.hpp>
-#   include <carve/external/boost/preprocessor/repeat.hpp>
-#   include <carve/external/boost/preprocessor/inc.hpp>
-#   include <carve/external/boost/preprocessor/cat.hpp>
+#   include <boost/preprocessor/tuple/elem.hpp>
+#   include <boost/preprocessor/comma_if.hpp>
+#   include <boost/preprocessor/repeat.hpp>
+#   include <boost/preprocessor/inc.hpp>
+#   include <boost/preprocessor/cat.hpp>
 
 #   define BOOST_MPL_PP_AUX_DEFAULT_PARAM_FUNC(unused, i, pv) \
     BOOST_PP_COMMA_IF(i) \

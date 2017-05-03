@@ -10,12 +10,12 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: ctps.hpp 49267 2008-10-11 06:19:02Z agurtovoy $
-// $Date: 2008-10-11 02:19:02 -0400 (Sat, 11 Oct 2008) $
-// $Revision: 49267 $
+// $Id$
+// $Date$
+// $Revision$
 
-#include <carve/external/boost/mpl/aux_/config/workaround.hpp>
-#include <carve/external/boost/config.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
+#include <boost/config.hpp>
 
 #if    !defined(BOOST_MPL_CFG_NO_NONTYPE_TEMPLATE_PARTIAL_SPEC) \
     && !defined(BOOST_MPL_PREPROCESSING_MODE) \

@@ -14,10 +14,10 @@
 # ifndef BOOST_PREPROCESSOR_LIST_FOLD_RIGHT_HPP
 # define BOOST_PREPROCESSOR_LIST_FOLD_RIGHT_HPP
 #
-# include <carve/external/boost/preprocessor/cat.hpp>
-# include <carve/external/boost/preprocessor/control/while.hpp>
-# include <carve/external/boost/preprocessor/debug/error.hpp>
-# include <carve/external/boost/preprocessor/detail/auto_rec.hpp>
+# include <boost/preprocessor/cat.hpp>
+# include <boost/preprocessor/control/while.hpp>
+# include <boost/preprocessor/debug/error.hpp>
+# include <boost/preprocessor/detail/auto_rec.hpp>
 #
 # if 0
 #    define BOOST_PP_LIST_FOLD_RIGHT(op, state, list)
@@ -32,9 +32,9 @@
 # define BOOST_PP_LIST_FOLD_RIGHT_2ND_D BOOST_PP_LIST_FOLD_RIGHT_D
 #
 # if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_EDG()
-#    include <carve/external/boost/preprocessor/list/detail/edg/fold_right.hpp>
+#    include <boost/preprocessor/list/detail/edg/fold_right.hpp>
 # else
-#    include <carve/external/boost/preprocessor/list/detail/fold_right.hpp>
+#    include <boost/preprocessor/list/detail/fold_right.hpp>
 # endif
 #
 # endif

@@ -11,25 +11,25 @@
 #ifndef BOOST_TT_IS_ENUM_HPP_INCLUDED
 #define BOOST_TT_IS_ENUM_HPP_INCLUDED
 
-#include <carve/external/boost/type_traits/intrinsics.hpp>
+#include <boost/type_traits/intrinsics.hpp>
 #ifndef BOOST_IS_ENUM
-#include <carve/external/boost/type_traits/add_reference.hpp>
-#include <carve/external/boost/type_traits/is_arithmetic.hpp>
-#include <carve/external/boost/type_traits/is_reference.hpp>
-#include <carve/external/boost/type_traits/is_convertible.hpp>
-#include <carve/external/boost/type_traits/is_array.hpp>
+#include <boost/type_traits/add_reference.hpp>
+#include <boost/type_traits/is_arithmetic.hpp>
+#include <boost/type_traits/is_reference.hpp>
+#include <boost/type_traits/is_convertible.hpp>
+#include <boost/type_traits/is_array.hpp>
 #ifdef __GNUC__
-#include <carve/external/boost/type_traits/is_function.hpp>
+#include <boost/type_traits/is_function.hpp>
 #endif
-#include <carve/external/boost/type_traits/config.hpp>
+#include <boost/type_traits/config.hpp>
 #if defined(BOOST_TT_HAS_CONFORMING_IS_CLASS_IMPLEMENTATION) 
-#  include <carve/external/boost/type_traits/is_class.hpp>
-#  include <carve/external/boost/type_traits/is_union.hpp>
+#  include <boost/type_traits/is_class.hpp>
+#  include <boost/type_traits/is_union.hpp>
 #endif
 #endif
 
 // should be the last #include
-#include <carve/external/boost/type_traits/detail/bool_trait_def.hpp>
+#include <boost/type_traits/detail/bool_trait_def.hpp>
 
 namespace boost {
 
@@ -55,13 +55,12 @@ struct is_class_or_union
 template <typename T>
 struct is_class_or_union
 {
-# if BOOST_WORKAROUND(BOOST_MSVC, < 1300) || BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x581))// we simply can't detect it this way.
+# if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x581))// we simply can't detect it this way.
     BOOST_STATIC_CONSTANT(bool, value = false);
 # else
     template <class U> static ::boost::type_traits::yes_type is_class_or_union_tester(void(U::*)(void));
 
-#  if BOOST_WORKAROUND(BOOST_MSVC, == 1300)                 \
-    || BOOST_WORKAROUND(__MWERKS__, <= 0x3000) // no SFINAE
+#  if BOOST_WORKAROUND(__MWERKS__, <= 0x3000) // no SFINAE
     static ::boost::type_traits::no_type is_class_or_union_tester(...);
     BOOST_STATIC_CONSTANT(
         bool, value = sizeof(is_class_or_union_tester(0)) == sizeof(::boost::type_traits::yes_type));
@@ -95,7 +94,7 @@ template <>
 struct is_enum_helper<false>
 {
     template <typename T> struct type
-       : ::boost::is_convertible<typename boost::add_reference<T>::type,::boost::detail::int_convertible>
+       : public ::boost::is_convertible<typename boost::add_reference<T>::type,::boost::detail::int_convertible>
     {
     };
 };
@@ -184,6 +183,6 @@ BOOST_TT_AUX_BOOL_TRAIT_DEF1(is_enum,T,BOOST_IS_ENUM(T))
 
 } // namespace boost
 
-#include <carve/external/boost/type_traits/detail/bool_trait_undef.hpp>
+#include <boost/type_traits/detail/bool_trait_undef.hpp>
 
 #endif // BOOST_TT_IS_ENUM_HPP_INCLUDED

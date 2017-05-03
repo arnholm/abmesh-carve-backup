@@ -10,11 +10,11 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: params.hpp 49267 2008-10-11 06:19:02Z agurtovoy $
-// $Date: 2008-10-11 02:19:02 -0400 (Sat, 11 Oct 2008) $
-// $Revision: 49267 $
+// $Id$
+// $Date$
+// $Revision$
 
-#include <carve/external/boost/mpl/aux_/config/preprocessor.hpp>
+#include <boost/mpl/aux_/config/preprocessor.hpp>
 
 // BOOST_MPL_PP_PARAMS(0,T): <nothing>
 // BOOST_MPL_PP_PARAMS(1,T): T1
@@ -23,7 +23,7 @@
 
 #if !defined(BOOST_MPL_CFG_NO_OWN_PP_PRIMITIVES)
 
-#   include <carve/external/boost/preprocessor/cat.hpp>
+#   include <boost/preprocessor/cat.hpp>
 
 #   define BOOST_MPL_PP_PARAMS(n,p) \
     BOOST_PP_CAT(BOOST_MPL_PP_PARAMS_,n)(p) \
@@ -42,10 +42,10 @@
 
 #else
 
-#   include <carve/external/boost/preprocessor/comma_if.hpp>
-#   include <carve/external/boost/preprocessor/repeat.hpp>
-#   include <carve/external/boost/preprocessor/inc.hpp>
-#   include <carve/external/boost/preprocessor/cat.hpp>
+#   include <boost/preprocessor/comma_if.hpp>
+#   include <boost/preprocessor/repeat.hpp>
+#   include <boost/preprocessor/inc.hpp>
+#   include <boost/preprocessor/cat.hpp>
 
 #   define BOOST_MPL_PP_AUX_PARAM_FUNC(unused, i, param) \
     BOOST_PP_COMMA_IF(i) \

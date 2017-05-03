@@ -10,15 +10,15 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: not.hpp 49267 2008-10-11 06:19:02Z agurtovoy $
-// $Date: 2008-10-11 02:19:02 -0400 (Sat, 11 Oct 2008) $
-// $Revision: 49267 $
+// $Id$
+// $Date$
+// $Revision$
 
-#include <carve/external/boost/mpl/bool.hpp>
-#include <carve/external/boost/mpl/aux_/nttp_decl.hpp>
-#include <carve/external/boost/mpl/aux_/nested_type_wknd.hpp>
-#include <carve/external/boost/mpl/aux_/na_spec.hpp>
-#include <carve/external/boost/mpl/aux_/lambda_support.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/aux_/nttp_decl.hpp>
+#include <boost/mpl/aux_/nested_type_wknd.hpp>
+#include <boost/mpl/aux_/na_spec.hpp>
+#include <boost/mpl/aux_/lambda_support.hpp>
 
 namespace boost { namespace mpl {
 

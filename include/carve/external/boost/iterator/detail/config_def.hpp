@@ -13,8 +13,8 @@
 // 23/02/03 thw
 //
 
-#include <carve/external/boost/config.hpp> // for prior
-#include <carve/external/boost/detail/workaround.hpp>
+#include <boost/config.hpp> // for prior
+#include <boost/detail/workaround.hpp>
 
 #ifdef BOOST_ITERATOR_CONFIG_DEF
 # error you have nested config_def #inclusion.
@@ -46,8 +46,7 @@
 
 #endif
 
-#if BOOST_WORKAROUND(BOOST_MSVC, <= 1300)                                       \
-    || BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x5A0))                   \
+#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x5A0))                      \
     || (BOOST_WORKAROUND(BOOST_INTEL_CXX_VERSION, <= 700) && defined(_MSC_VER)) \
     || BOOST_WORKAROUND(__DECCXX_VER, BOOST_TESTED_AT(60590042))                \
     || BOOST_WORKAROUND(__SUNPRO_CC, BOOST_TESTED_AT(0x590))
@@ -88,13 +87,12 @@
 #  define BOOST_NO_IS_CONVERTIBLE // "is_convertible doesn't work for simple types"
 #endif
 
-#if BOOST_WORKAROUND(__GNUC__, == 2)                                                                            \
-    || BOOST_WORKAROUND(__GNUC__, == 3) && BOOST_WORKAROUND(__GNUC_MINOR__, < 4) && !defined(__EDG_VERSION__)   \
+#if BOOST_WORKAROUND(__GNUC__, == 3) && BOOST_WORKAROUND(__GNUC_MINOR__, < 4) && !defined(__EDG_VERSION__)   \
     || BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x551))
 #  define BOOST_NO_IS_CONVERTIBLE_TEMPLATE // The following program fails to compile:
 
 #  if 0 // test code
-    #include <carve/external/boost/type_traits/is_convertible.hpp>
+    #include <boost/type_traits/is_convertible.hpp>
     template <class T>
     struct foo
     {
@@ -116,16 +114,9 @@
 # define BOOST_NO_STRICT_ITERATOR_INTEROPERABILITY
 #endif 
 
-# if !BOOST_WORKAROUND(BOOST_MSVC, <= 1300)
-#  define BOOST_ARG_DEPENDENT_TYPENAME typename
-# else
-#  define BOOST_ARG_DEPENDENT_TYPENAME
-# endif
+# if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x564))
 
-# if BOOST_WORKAROUND(__GNUC__, == 2) && BOOST_WORKAROUND(__GNUC_MINOR__, BOOST_TESTED_AT(95)) \
-    || BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x564))
-
-// GCC-2.95 eagerly instantiates templated constructors and conversion
+// GCC-2.95 (obsolete) eagerly instantiates templated constructors and conversion
 // operators in convertibility checks, causing premature errors.
 //
 // Borland's problems are harder to diagnose due to lack of an

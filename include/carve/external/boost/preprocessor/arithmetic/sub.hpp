@@ -14,10 +14,10 @@
 # ifndef BOOST_PREPROCESSOR_ARITHMETIC_SUB_HPP
 # define BOOST_PREPROCESSOR_ARITHMETIC_SUB_HPP
 #
-# include <carve/external/boost/preprocessor/arithmetic/dec.hpp>
-# include <carve/external/boost/preprocessor/config/config.hpp>
-# include <carve/external/boost/preprocessor/control/while.hpp>
-# include <carve/external/boost/preprocessor/tuple/elem.hpp>
+# include <boost/preprocessor/arithmetic/dec.hpp>
+# include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/control/while.hpp>
+# include <boost/preprocessor/tuple/elem.hpp>
 #
 # /* BOOST_PP_SUB */
 #

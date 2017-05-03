@@ -10,10 +10,10 @@
 #ifndef BOOST_TT_ADD_VOLATILE_HPP_INCLUDED
 #define BOOST_TT_ADD_VOLATILE_HPP_INCLUDED
 
-#include <carve/external/boost/config.hpp>
+#include <boost/config.hpp>
 
 // should be the last #include
-#include <carve/external/boost/type_traits/detail/type_trait_def.hpp>
+#include <boost/type_traits/detail/type_trait_def.hpp>
 
 namespace boost {
 
@@ -36,12 +36,10 @@ BOOST_TT_AUX_TYPE_TRAIT_DEF1(add_volatile,T,T volatile)
 #   pragma warning(pop)
 #endif 
 
-#ifndef BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 BOOST_TT_AUX_TYPE_TRAIT_PARTIAL_SPEC1_1(typename T,add_volatile,T&,T&)
-#endif
 
 } // namespace boost
 
-#include <carve/external/boost/type_traits/detail/type_trait_undef.hpp>
+#include <boost/type_traits/detail/type_trait_undef.hpp>
 
 #endif // BOOST_TT_ADD_VOLATILE_HPP_INCLUDED

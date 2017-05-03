@@ -6,22 +6,23 @@
 #ifndef BOOST_ITERATOR_CATEGORIES_HPP
 # define BOOST_ITERATOR_CATEGORIES_HPP
 
-# include <carve/external/boost/config.hpp>
-# include <carve/external/boost/detail/iterator.hpp>
-# include <carve/external/boost/iterator/detail/config_def.hpp>
+# include <boost/config.hpp>
+# include <boost/detail/iterator.hpp>
+# include <boost/iterator/detail/config_def.hpp>
 
-# include <carve/external/boost/detail/workaround.hpp>
+# include <boost/detail/workaround.hpp>
 
-# include <carve/external/boost/mpl/eval_if.hpp>
-# include <carve/external/boost/mpl/identity.hpp>
-# include <carve/external/boost/mpl/placeholders.hpp>
-# include <carve/external/boost/mpl/aux_/lambda_support.hpp>
+# include <boost/mpl/eval_if.hpp>
+# include <boost/mpl/identity.hpp>
+# include <boost/mpl/placeholders.hpp>
+# include <boost/mpl/aux_/lambda_support.hpp>
 
-# include <carve/external/boost/type_traits/is_convertible.hpp>
+# include <boost/type_traits/is_convertible.hpp>
 
-# include <carve/external/boost/static_assert.hpp>
+# include <boost/static_assert.hpp>
 
 namespace boost {
+namespace iterators {
 
 //
 // Traversal Categories
@@ -29,34 +30,34 @@ namespace boost {
 
 struct no_traversal_tag {};
 
-struct incrementable_traversal_tag 
+struct incrementable_traversal_tag
   : no_traversal_tag
 {
 //     incrementable_traversal_tag() {}
 //     incrementable_traversal_tag(std::output_iterator_tag const&) {};
 };
-  
+
 struct single_pass_traversal_tag
   : incrementable_traversal_tag
 {
 //     single_pass_traversal_tag() {}
 //     single_pass_traversal_tag(std::input_iterator_tag const&) {};
 };
-  
+
 struct forward_traversal_tag
   : single_pass_traversal_tag
 {
 //     forward_traversal_tag() {}
 //     forward_traversal_tag(std::forward_iterator_tag const&) {};
 };
-  
+
 struct bidirectional_traversal_tag
   : forward_traversal_tag
 {
 //     bidirectional_traversal_tag() {};
 //     bidirectional_traversal_tag(std::bidirectional_iterator_tag const&) {};
 };
-  
+
 struct random_access_traversal_tag
   : bidirectional_traversal_tag
 {
@@ -65,7 +66,7 @@ struct random_access_traversal_tag
 };
 
 namespace detail
-{  
+{
   //
   // Convert a "strictly old-style" iterator category to a traversal
   // tag.  This is broken out into a separate metafunction to reduce
@@ -97,50 +98,7 @@ namespace detail
       >
   {};
 
-# if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-  template <>
-  struct old_category_to_traversal<int>
-  {
-      typedef int type;
-  };
-# endif
-
-  template <class Traversal>
-  struct pure_traversal_tag
-    : mpl::eval_if<
-          is_convertible<Traversal,random_access_traversal_tag>
-        , mpl::identity<random_access_traversal_tag>
-        , mpl::eval_if<
-              is_convertible<Traversal,bidirectional_traversal_tag>
-            , mpl::identity<bidirectional_traversal_tag>
-            , mpl::eval_if<
-                  is_convertible<Traversal,forward_traversal_tag>
-                , mpl::identity<forward_traversal_tag>
-                , mpl::eval_if<
-                      is_convertible<Traversal,single_pass_traversal_tag>
-                    , mpl::identity<single_pass_traversal_tag>
-                    , mpl::eval_if<
-                          is_convertible<Traversal,incrementable_traversal_tag>
-                        , mpl::identity<incrementable_traversal_tag>
-                        , void
-                      >
-                  >
-              >
-          >
-      >
-  {
-  };
-  
-# if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
-  template <>
-  struct pure_traversal_tag<int>
-  {
-      typedef int type;
-  };
-# endif
-
 } // namespace detail
-
 
 //
 // Convert an iterator category into a traversal tag
@@ -150,7 +108,7 @@ struct iterator_category_to_traversal
   : mpl::eval_if< // if already convertible to a traversal tag, we're done.
         is_convertible<Cat,incrementable_traversal_tag>
       , mpl::identity<Cat>
-      , boost::detail::old_category_to_traversal<Cat>
+      , boost::iterators::detail::old_category_to_traversal<Cat>
     >
 {};
 
@@ -181,8 +139,77 @@ struct iterator_traversal<mpl::_>
 {};
 # endif
 
+//
+// Convert an iterator traversal to one of the traversal tags.
+//
+template <class Traversal>
+struct pure_traversal_tag
+  : mpl::eval_if<
+        is_convertible<Traversal,random_access_traversal_tag>
+      , mpl::identity<random_access_traversal_tag>
+      , mpl::eval_if<
+            is_convertible<Traversal,bidirectional_traversal_tag>
+          , mpl::identity<bidirectional_traversal_tag>
+          , mpl::eval_if<
+                is_convertible<Traversal,forward_traversal_tag>
+              , mpl::identity<forward_traversal_tag>
+              , mpl::eval_if<
+                    is_convertible<Traversal,single_pass_traversal_tag>
+                  , mpl::identity<single_pass_traversal_tag>
+                  , mpl::eval_if<
+                        is_convertible<Traversal,incrementable_traversal_tag>
+                      , mpl::identity<incrementable_traversal_tag>
+                      , void
+                    >
+                >
+            >
+        >
+    >
+{
+};
+
+//
+// Trait to retrieve one of the iterator traversal tags from the iterator category or traversal.
+//
+template <class Iterator = mpl::_1>
+struct pure_iterator_traversal
+  : pure_traversal_tag<typename iterator_traversal<Iterator>::type>
+{};
+
+# ifdef BOOST_MPL_CFG_NO_FULL_LAMBDA_SUPPORT
+template <>
+struct pure_iterator_traversal<mpl::_1>
+{
+    template <class T>
+    struct apply : pure_iterator_traversal<T>
+    {};
+};
+template <>
+struct pure_iterator_traversal<mpl::_>
+  : pure_iterator_traversal<mpl::_1>
+{};
+# endif
+
+} // namespace iterators
+
+using iterators::no_traversal_tag;
+using iterators::incrementable_traversal_tag;
+using iterators::single_pass_traversal_tag;
+using iterators::forward_traversal_tag;
+using iterators::bidirectional_traversal_tag;
+using iterators::random_access_traversal_tag;
+using iterators::iterator_category_to_traversal;
+using iterators::iterator_traversal;
+
+// This import is needed for backward compatibility with Boost.Range:
+// boost/range/detail/demote_iterator_traversal_tag.hpp
+// It should be removed when that header is fixed.
+namespace detail {
+using iterators::pure_traversal_tag;
+} // namespace detail
+
 } // namespace boost
 
-#include <carve/external/boost/iterator/detail/config_undef.hpp>
+#include <boost/iterator/detail/config_undef.hpp>
 
 #endif // BOOST_ITERATOR_CATEGORIES_HPP

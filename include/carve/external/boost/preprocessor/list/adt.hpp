@@ -14,10 +14,10 @@
 # ifndef BOOST_PREPROCESSOR_LIST_ADT_HPP
 # define BOOST_PREPROCESSOR_LIST_ADT_HPP
 #
-# include <carve/external/boost/preprocessor/config/config.hpp>
-# include <carve/external/boost/preprocessor/detail/is_binary.hpp>
-# include <carve/external/boost/preprocessor/logical/compl.hpp>
-# include <carve/external/boost/preprocessor/tuple/eat.hpp>
+# include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/detail/is_binary.hpp>
+# include <boost/preprocessor/logical/compl.hpp>
+# include <boost/preprocessor/tuple/eat.hpp>
 #
 # /* BOOST_PP_LIST_CONS */
 #

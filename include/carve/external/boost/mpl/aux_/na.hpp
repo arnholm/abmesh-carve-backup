@@ -10,14 +10,14 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: na.hpp 49267 2008-10-11 06:19:02Z agurtovoy $
-// $Date: 2008-10-11 02:19:02 -0400 (Sat, 11 Oct 2008) $
-// $Revision: 49267 $
+// $Id$
+// $Date$
+// $Revision$
 
-#include <carve/external/boost/mpl/bool.hpp>
-#include <carve/external/boost/mpl/aux_/na_fwd.hpp>
-#include <carve/external/boost/mpl/aux_/config/msvc.hpp>
-#include <carve/external/boost/mpl/aux_/config/ctps.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/aux_/na_fwd.hpp>
+#include <boost/mpl/aux_/config/msvc.hpp>
+#include <boost/mpl/aux_/config/ctps.hpp>
 
 namespace boost { namespace mpl {
 

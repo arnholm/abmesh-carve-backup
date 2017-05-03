@@ -9,7 +9,7 @@
 #ifndef BOOST_TT_DETAIL_FALSE_RESULT_HPP_INCLUDED
 #define BOOST_TT_DETAIL_FALSE_RESULT_HPP_INCLUDED
 
-#include <carve/external/boost/config.hpp>
+#include <boost/config.hpp>
 
 namespace boost {
 namespace type_traits {

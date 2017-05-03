@@ -11,10 +11,10 @@
 #ifndef BOOST_LIMITS
 #define BOOST_LIMITS
 
-#include <carve/external/boost/config.hpp>
+#include <boost/config.hpp>
 
 #ifdef BOOST_NO_LIMITS
-# include <carve/external/boost/detail/limits.hpp>
+#  error "There is no std::numeric_limits suppport available."
 #else
 # include <limits>
 #endif

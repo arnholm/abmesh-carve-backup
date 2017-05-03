@@ -12,13 +12,13 @@
 # ifndef BOOST_PREPROCESSOR_ITERATION_ITERATE_HPP
 # define BOOST_PREPROCESSOR_ITERATION_ITERATE_HPP
 #
-# include <carve/external/boost/preprocessor/arithmetic/dec.hpp>
-# include <carve/external/boost/preprocessor/arithmetic/inc.hpp>
-# include <carve/external/boost/preprocessor/array/elem.hpp>
-# include <carve/external/boost/preprocessor/array/size.hpp>
-# include <carve/external/boost/preprocessor/cat.hpp>
-# include <carve/external/boost/preprocessor/slot/slot.hpp>
-# include <carve/external/boost/preprocessor/tuple/elem.hpp>
+# include <boost/preprocessor/arithmetic/dec.hpp>
+# include <boost/preprocessor/arithmetic/inc.hpp>
+# include <boost/preprocessor/array/elem.hpp>
+# include <boost/preprocessor/array/size.hpp>
+# include <boost/preprocessor/cat.hpp>
+# include <boost/preprocessor/slot/slot.hpp>
+# include <boost/preprocessor/tuple/elem.hpp>
 #
 # /* BOOST_PP_ITERATION_DEPTH */
 #
@@ -35,7 +35,7 @@
 #
 # /* BOOST_PP_ITERATION_FLAGS */
 #
-# define BOOST_PP_ITERATION_FLAGS() (BOOST_PP_CAT(BOOST_PP_ITERATION_FLAGS_, BOOST_PP_ITERATION_DEPTH()))
+# define BOOST_PP_ITERATION_FLAGS() (BOOST_PP_CAT(BOOST_PP_ITERATION_FLAGS_, BOOST_PP_ITERATION_DEPTH())())
 #
 # /* BOOST_PP_FRAME_ITERATION */
 #
@@ -48,7 +48,7 @@
 #
 # /* BOOST_PP_FRAME_FLAGS */
 #
-# define BOOST_PP_FRAME_FLAGS(i) (BOOST_PP_CAT(BOOST_PP_ITERATION_FLAGS_, i))
+# define BOOST_PP_FRAME_FLAGS(i) (BOOST_PP_CAT(BOOST_PP_ITERATION_FLAGS_, i)())
 #
 # /* BOOST_PP_RELATIVE_ITERATION */
 #
@@ -67,16 +67,16 @@
 #
 # /* BOOST_PP_RELATIVE_FLAGS */
 #
-# define BOOST_PP_RELATIVE_FLAGS(i) (BOOST_PP_CAT(BOOST_PP_RELATIVE_, i)(BOOST_PP_ITERATION_FLAGS_))
+# define BOOST_PP_RELATIVE_FLAGS(i) (BOOST_PP_CAT(BOOST_PP_RELATIVE_, i)(BOOST_PP_ITERATION_FLAGS_)())
 #
 # /* BOOST_PP_ITERATE */
 #
 # define BOOST_PP_ITERATE() BOOST_PP_CAT(BOOST_PP_ITERATE_, BOOST_PP_INC(BOOST_PP_ITERATION_DEPTH()))
 #
-# define BOOST_PP_ITERATE_1 <carve/external/boost/preprocessor/iteration/detail/iter/forward1.hpp>
-# define BOOST_PP_ITERATE_2 <carve/external/boost/preprocessor/iteration/detail/iter/forward2.hpp>
-# define BOOST_PP_ITERATE_3 <carve/external/boost/preprocessor/iteration/detail/iter/forward3.hpp>
-# define BOOST_PP_ITERATE_4 <carve/external/boost/preprocessor/iteration/detail/iter/forward4.hpp>
-# define BOOST_PP_ITERATE_5 <carve/external/boost/preprocessor/iteration/detail/iter/forward5.hpp>
+# define BOOST_PP_ITERATE_1 <boost/preprocessor/iteration/detail/iter/forward1.hpp>
+# define BOOST_PP_ITERATE_2 <boost/preprocessor/iteration/detail/iter/forward2.hpp>
+# define BOOST_PP_ITERATE_3 <boost/preprocessor/iteration/detail/iter/forward3.hpp>
+# define BOOST_PP_ITERATE_4 <boost/preprocessor/iteration/detail/iter/forward4.hpp>
+# define BOOST_PP_ITERATE_5 <boost/preprocessor/iteration/detail/iter/forward5.hpp>
 #
 # endif

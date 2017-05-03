@@ -9,24 +9,24 @@
 #ifndef BOOST_TT_MAKE_UNSIGNED_HPP_INCLUDED
 #define BOOST_TT_MAKE_UNSIGNED_HPP_INCLUDED
 
-#include <carve/external/boost/mpl/if.hpp>
-#include <carve/external/boost/type_traits/is_integral.hpp>
-#include <carve/external/boost/type_traits/is_signed.hpp>
-#include <carve/external/boost/type_traits/is_unsigned.hpp>
-#include <carve/external/boost/type_traits/is_enum.hpp>
-#include <carve/external/boost/type_traits/is_same.hpp>
-#include <carve/external/boost/type_traits/remove_cv.hpp>
-#include <carve/external/boost/type_traits/is_const.hpp>
-#include <carve/external/boost/type_traits/is_volatile.hpp>
-#include <carve/external/boost/type_traits/add_const.hpp>
-#include <carve/external/boost/type_traits/add_volatile.hpp>
-#include <carve/external/boost/type_traits/detail/ice_or.hpp>
-#include <carve/external/boost/type_traits/detail/ice_and.hpp>
-#include <carve/external/boost/type_traits/detail/ice_not.hpp>
-#include <carve/external/boost/static_assert.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/type_traits/is_integral.hpp>
+#include <boost/type_traits/is_signed.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
+#include <boost/type_traits/is_enum.hpp>
+#include <boost/type_traits/is_same.hpp>
+#include <boost/type_traits/remove_cv.hpp>
+#include <boost/type_traits/is_const.hpp>
+#include <boost/type_traits/is_volatile.hpp>
+#include <boost/type_traits/add_const.hpp>
+#include <boost/type_traits/add_volatile.hpp>
+#include <boost/type_traits/detail/ice_or.hpp>
+#include <boost/type_traits/detail/ice_and.hpp>
+#include <boost/type_traits/detail/ice_not.hpp>
+#include <boost/static_assert.hpp>
 
 // should be the last #include
-#include <carve/external/boost/type_traits/detail/type_trait_def.hpp>
+#include <boost/type_traits/detail/type_trait_def.hpp>
 
 namespace boost {
 
@@ -37,11 +37,9 @@ struct make_unsigned_imp
 {
    BOOST_STATIC_ASSERT(
       (::boost::type_traits::ice_or< ::boost::is_integral<T>::value, ::boost::is_enum<T>::value>::value));
-#if !BOOST_WORKAROUND(BOOST_MSVC, <=1300)
    BOOST_STATIC_ASSERT(
       (::boost::type_traits::ice_not< ::boost::is_same<
          typename remove_cv<T>::type, bool>::value>::value));
-#endif
 
    typedef typename remove_cv<T>::type t_no_cv;
    typedef typename mpl::if_c<
@@ -72,7 +70,15 @@ struct make_unsigned_imp
                      is_same<t_no_cv, long>,
                      unsigned long,
 #if defined(BOOST_HAS_LONG_LONG)
+#ifdef BOOST_HAS_INT128
+                     typename mpl::if_c<
+                        sizeof(t_no_cv) == sizeof(boost::ulong_long_type), 
+                        boost::ulong_long_type, 
+                        boost::uint128_type
+                     >::type
+#else
                      boost::ulong_long_type
+#endif
 #elif defined(BOOST_HAS_MS_INT64)
                      unsigned __int64
 #else
@@ -96,7 +102,15 @@ struct make_unsigned_imp
                      sizeof(t_no_cv) == sizeof(unsigned long),
                      unsigned long,
 #if defined(BOOST_HAS_LONG_LONG)
+#ifdef BOOST_HAS_INT128
+                     typename mpl::if_c<
+                        sizeof(t_no_cv) == sizeof(boost::ulong_long_type), 
+                        boost::ulong_long_type, 
+                        boost::uint128_type
+                     >::type
+#else
                      boost::ulong_long_type
+#endif
 #elif defined(BOOST_HAS_MS_INT64)
                      unsigned __int64
 #else
@@ -131,7 +145,7 @@ BOOST_TT_AUX_TYPE_TRAIT_DEF1(make_unsigned,T,typename boost::detail::make_unsign
 
 } // namespace boost
 
-#include <carve/external/boost/type_traits/detail/type_trait_undef.hpp>
+#include <boost/type_traits/detail/type_trait_undef.hpp>
 
 #endif // BOOST_TT_ADD_REFERENCE_HPP_INCLUDED
 

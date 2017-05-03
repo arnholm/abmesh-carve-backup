@@ -10,18 +10,18 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: compiler.hpp 53189 2009-05-22 20:07:55Z hkaiser $
-// $Date: 2009-05-22 16:07:55 -0400 (Fri, 22 May 2009) $
-// $Revision: 53189 $
+// $Id$
+// $Date$
+// $Revision$
 
 #if !defined(BOOST_MPL_CFG_COMPILER_DIR)
 
-#   include <carve/external/boost/mpl/aux_/config/dtp.hpp>
-#   include <carve/external/boost/mpl/aux_/config/ttp.hpp>
-#   include <carve/external/boost/mpl/aux_/config/ctps.hpp>
-#   include <carve/external/boost/mpl/aux_/config/msvc.hpp>
-#   include <carve/external/boost/mpl/aux_/config/gcc.hpp>
-#   include <carve/external/boost/mpl/aux_/config/workaround.hpp>
+#   include <boost/mpl/aux_/config/dtp.hpp>
+#   include <boost/mpl/aux_/config/ttp.hpp>
+#   include <boost/mpl/aux_/config/ctps.hpp>
+#   include <boost/mpl/aux_/config/msvc.hpp>
+#   include <boost/mpl/aux_/config/gcc.hpp>
+#   include <boost/mpl/aux_/config/workaround.hpp>
 
 #   if BOOST_WORKAROUND(BOOST_MSVC, < 1300)
 #       define BOOST_MPL_CFG_COMPILER_DIR msvc60

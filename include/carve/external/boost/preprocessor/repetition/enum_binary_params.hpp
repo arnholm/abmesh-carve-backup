@@ -12,12 +12,12 @@
 # ifndef BOOST_PREPROCESSOR_REPETITION_ENUM_BINARY_PARAMS_HPP
 # define BOOST_PREPROCESSOR_REPETITION_ENUM_BINARY_PARAMS_HPP
 #
-# include <carve/external/boost/preprocessor/cat.hpp>
-# include <carve/external/boost/preprocessor/config/config.hpp>
-# include <carve/external/boost/preprocessor/punctuation/comma_if.hpp>
-# include <carve/external/boost/preprocessor/repetition/repeat.hpp>
-# include <carve/external/boost/preprocessor/tuple/elem.hpp>
-# include <carve/external/boost/preprocessor/tuple/rem.hpp>
+# include <boost/preprocessor/cat.hpp>
+# include <boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/punctuation/comma_if.hpp>
+# include <boost/preprocessor/repetition/repeat.hpp>
+# include <boost/preprocessor/tuple/elem.hpp>
+# include <boost/preprocessor/tuple/rem.hpp>
 #
 # /* BOOST_PP_ENUM_BINARY_PARAMS */
 #

@@ -14,7 +14,7 @@
 # ifndef BOOST_PREPROCESSOR_ARITHMETIC_DEC_HPP
 # define BOOST_PREPROCESSOR_ARITHMETIC_DEC_HPP
 #
-# include <carve/external/boost/preprocessor/config/config.hpp>
+# include <boost/preprocessor/config/config.hpp>
 #
 # /* BOOST_PP_DEC */
 #
@@ -284,5 +284,6 @@
 # define BOOST_PP_DEC_254 253
 # define BOOST_PP_DEC_255 254
 # define BOOST_PP_DEC_256 255
+# define BOOST_PP_DEC_257 256
 #
 # endif

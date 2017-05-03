@@ -7,19 +7,19 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: integral_wrapper.hpp 49267 2008-10-11 06:19:02Z agurtovoy $
-// $Date: 2008-10-11 02:19:02 -0400 (Sat, 11 Oct 2008) $
-// $Revision: 49267 $
+// $Id$
+// $Date$
+// $Revision$
 
 // NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION!
 
-#include <carve/external/boost/mpl/integral_c_tag.hpp>
-#include <carve/external/boost/mpl/aux_/static_cast.hpp>
-#include <carve/external/boost/mpl/aux_/nttp_decl.hpp>
-#include <carve/external/boost/mpl/aux_/config/static_constant.hpp>
-#include <carve/external/boost/mpl/aux_/config/workaround.hpp>
+#include <boost/mpl/integral_c_tag.hpp>
+#include <boost/mpl/aux_/static_cast.hpp>
+#include <boost/mpl/aux_/nttp_decl.hpp>
+#include <boost/mpl/aux_/config/static_constant.hpp>
+#include <boost/mpl/aux_/config/workaround.hpp>
 
-#include <carve/external/boost/preprocessor/cat.hpp>
+#include <boost/preprocessor/cat.hpp>
 
 #if !defined(AUX_WRAPPER_NAME)
 #   define AUX_WRAPPER_NAME BOOST_PP_CAT(AUX_WRAPPER_VALUE_TYPE,_)
@@ -77,7 +77,7 @@ struct AUX_WRAPPER_NAME
     // functions that return objects of both arithmetic ('int', 'long',
     // 'double', etc.) and wrapped integral types (for an example, see 
     // "mpl/example/power.cpp")
-    operator AUX_WRAPPER_VALUE_TYPE() const { return static_cast<AUX_WRAPPER_VALUE_TYPE>(this->value); } 
+    BOOST_CONSTEXPR operator AUX_WRAPPER_VALUE_TYPE() const { return static_cast<AUX_WRAPPER_VALUE_TYPE>(this->value); } 
 };
 
 #if !defined(BOOST_NO_INCLASS_MEMBER_INITIALIZATION)
