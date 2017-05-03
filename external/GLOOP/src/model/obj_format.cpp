@@ -33,7 +33,7 @@
 #include <iostream>
 #include <iomanip>
 #include <iterator>
-
+#include <algorithm>
 
 namespace gloop {
   namespace obj {
