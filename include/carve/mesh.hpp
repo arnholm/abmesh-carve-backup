@@ -307,7 +307,7 @@ namespace carve {
       }
 
       Face(const Face &other) :
-        edge(NULL), n_edges(other.n_edges), mesh(NULL), id(other.id),
+        tagable(other), edge(NULL), n_edges(other.n_edges), mesh(NULL), id(other.id),
         plane(other.plane), project(other.project), unproject(other.unproject) {
       }
 

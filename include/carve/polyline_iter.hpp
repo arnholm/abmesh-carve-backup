@@ -54,7 +54,7 @@ namespace carve {
       polyline_vertex_iter &operator-=(int v) { idx -= v; return *this; }
 
       Vertex *operator*() const {
-        CARVE_ASSERT(idx >= 0 && idx < base->vertexCount());
+        CARVE_ASSERT(idx >= 0 && static_cast<size_t>(idx) < base->vertexCount());
         return base->vertex((size_t)idx);
       }
     };
@@ -91,7 +91,7 @@ namespace carve {
       polyline_vertex_const_iter &operator-=(int v) { idx -= v; return *this; }
 
       const Vertex *operator*() const {
-        CARVE_ASSERT(idx >= 0 && idx < base->vertexCount());
+        CARVE_ASSERT(idx >= 0 && static_cast<size_t>(idx) < base->vertexCount());
         return base->vertex((size_t)idx);
       }
     };
@@ -99,7 +99,7 @@ namespace carve {
 
 
     static inline ssize_t operator-(const polyline_vertex_const_iter &a, const polyline_vertex_const_iter &b) { return a.idx - b.idx; }
-                
+
     static inline bool operator==(const polyline_vertex_const_iter&a, const polyline_vertex_const_iter &b) { return a.idx == b.idx; }
     static inline bool operator!=(const polyline_vertex_const_iter&a, const polyline_vertex_const_iter &b) { return a.idx != b.idx; }
     static inline bool operator<(const polyline_vertex_const_iter&a, const polyline_vertex_const_iter &b) { return a.idx < b.idx; }
@@ -107,16 +107,16 @@ namespace carve {
     static inline bool operator<=(const polyline_vertex_const_iter&a, const polyline_vertex_const_iter &b) { return a.idx <= b.idx; }
     static inline bool operator>=(const polyline_vertex_const_iter&a, const polyline_vertex_const_iter &b) { return a.idx >= b.idx; }
 
-    inline polyline_vertex_const_iter Polyline::vbegin() const { 
+    inline polyline_vertex_const_iter Polyline::vbegin() const {
       return polyline_vertex_const_iter(this, 0);
     }
-    inline polyline_vertex_const_iter Polyline::vend() const { 
+    inline polyline_vertex_const_iter Polyline::vend() const {
       return polyline_vertex_const_iter(this, (ssize_t)vertexCount());
     }
-    inline polyline_vertex_iter Polyline::vbegin() { 
+    inline polyline_vertex_iter Polyline::vbegin() {
       return polyline_vertex_iter(this, 0);
     }
-    inline polyline_vertex_iter Polyline::vend() { 
+    inline polyline_vertex_iter Polyline::vend() {
       return polyline_vertex_iter(this, (ssize_t)vertexCount());
     }
 
@@ -141,7 +141,7 @@ namespace carve {
       polyline_edge_iter &operator-=(int v) { idx -= v; return *this; }
 
       PolylineEdge *operator*() const {
-        CARVE_ASSERT(idx >= 0 && idx < base->edgeCount());
+        CARVE_ASSERT(idx >= 0 && static_cast<size_t>(idx) < base->edgeCount());
         return base->edge((size_t)idx);
       }
     };
@@ -149,7 +149,7 @@ namespace carve {
 
 
     static inline ssize_t operator-(const polyline_edge_iter&a, const polyline_edge_iter &b) { return a.idx - b.idx; }
-                
+
     static inline bool operator==(const polyline_edge_iter&a, const polyline_edge_iter &b) { return a.idx == b.idx; }
     static inline bool operator!=(const polyline_edge_iter&a, const polyline_edge_iter &b) { return a.idx != b.idx; }
     static inline bool operator<(const polyline_edge_iter&a, const polyline_edge_iter &b) { return a.idx < b.idx; }
@@ -178,7 +178,7 @@ namespace carve {
       polyline_edge_const_iter &operator-=(int v) { idx -= v; return *this; }
 
       const PolylineEdge *operator*() const {
-        CARVE_ASSERT(idx >= 0 && idx < base->edgeCount());
+        CARVE_ASSERT(idx >= 0 && static_cast<size_t>(idx) < base->edgeCount());
         return base->edge((size_t)idx);
       }
     };
@@ -186,7 +186,7 @@ namespace carve {
 
 
     static inline ssize_t operator-(const polyline_edge_const_iter&a, const polyline_edge_const_iter &b) { return a.idx - b.idx; }
-                
+
     static inline bool operator==(const polyline_edge_const_iter&a, const polyline_edge_const_iter &b) { return a.idx == b.idx; }
     static inline bool operator!=(const polyline_edge_const_iter&a, const polyline_edge_const_iter &b) { return a.idx != b.idx; }
     static inline bool operator<(const polyline_edge_const_iter&a, const polyline_edge_const_iter &b) { return a.idx < b.idx; }
@@ -194,16 +194,16 @@ namespace carve {
     static inline bool operator<=(const polyline_edge_const_iter&a, const polyline_edge_const_iter &b) { return a.idx <= b.idx; }
     static inline bool operator>=(const polyline_edge_const_iter&a, const polyline_edge_const_iter &b) { return a.idx >= b.idx; }
 
-    inline polyline_edge_const_iter Polyline::ebegin() const { 
+    inline polyline_edge_const_iter Polyline::ebegin() const {
       return polyline_edge_const_iter(this, 0);
     }
-    inline polyline_edge_const_iter Polyline::eend() const { 
+    inline polyline_edge_const_iter Polyline::eend() const {
       return polyline_edge_const_iter(this, (ssize_t)edgeCount());
     }
-    inline polyline_edge_iter Polyline::ebegin() { 
+    inline polyline_edge_iter Polyline::ebegin() {
       return polyline_edge_iter(this, 0);
     }
-    inline polyline_edge_iter Polyline::eend() { 
+    inline polyline_edge_iter Polyline::eend() {
       return polyline_edge_iter(this, (ssize_t)edgeCount());
     }
 
